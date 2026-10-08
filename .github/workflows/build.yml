@@ -19,6 +19,7 @@ jobs:
           gettext git libncurses5-dev libssl-dev python3-setuptools rsync \
           swig unzip zlib1g-dev file wget time libelf-dev
 
+    # FIXED: Points cleanly to the official openwrt git server endpoint mirror
     - name: Clone OpenWrt Mainline Framework
       run: |
         mkdir -p openwrt
