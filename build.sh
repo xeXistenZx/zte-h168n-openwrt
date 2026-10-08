@@ -3,17 +3,14 @@
 # Exit immediately if any command fails
 set -e
 
-# Pull directly from the official OpenWrt master repository
-REPO=https://github.com
-BRANCH=main  # Targets the live, official development tree
-
 echo "Cleaning previous workspace..."
 rm -rf ./openwrt
 mkdir openwrt
 cd openwrt
 
-echo "Fetching official OpenWrt core workspace..."
-git clone --depth 1 --branch $BRANCH $REPO .
+echo "Downloading stable OpenWrt mainline source archive package..."
+# Pulls a compressed stable snapshot directly to bypass Git server-side depth blocks
+wget -qO- https://github.com | tar -xz --strip-components=1
 
 echo "Updating and installing OpenWrt package feeds..."
 ./scripts/feeds update -a
