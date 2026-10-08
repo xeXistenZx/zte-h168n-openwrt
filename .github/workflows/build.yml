@@ -1,0 +1,40 @@
+name: ZTE H168N Build Automation
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build_firmware:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout wrapper repository
+      uses: actions/checkout@v4
+
+    - name: Set executable permissions on scripts
+      run: chmod +x ./build.sh
+
+    - name: Execute OpenWrt Compilation
+      run: ./build.sh
+
+    - name: Verify Output Firmware Binary
+      id: check_output
+      run: |
+        FILE="./openwrt/bin/targets/econet/en751221/openwrt-econet-en751221-zte_zxhn-h168n-v35-initramfs-kernel.bin"
+        if [ -f "$FILE" ]; then
+          echo "Firmware compilation successful!"
+          echo "file_exists=true" >> $GITHUB_OUTPUT
+        else
+          echo "ERROR: Target firmware binary not found!"
+          echo "file_exists=false" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+
+    - name: Upload Compiled Firmware Asset
+      if: steps.check_output.outputs.file_exists == 'true'
+      uses: actions/upload-artifact@v4
+      with:
+        name: zte-h168n-v35-openwrt-initramfs
+        path: ./openwrt/bin/targets/econet/en751221/openwrt-econet-en751221-zte_zxhn-h168n-v35-initramfs-kernel.bin
+        retention-days: 7
