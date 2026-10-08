@@ -23,8 +23,7 @@ jobs:
     - name: Clone OpenWrt Mainline Framework
       run: |
         mkdir -p openwrt
-        git clone --depth 1 --branch main https://openwrt.org ./openwrt
-
+        git clone --depth 1 --branch main https://git.openwrt.org/openwrt/openwrt.git ./openwrt
     - name: Standardize Script Line Endings for Linux
       run: |
         sed -i 's/\r$//' ./build.sh
