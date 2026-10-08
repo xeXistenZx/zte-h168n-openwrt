@@ -3,13 +3,17 @@
 # Exit immediately if any command fails
 set -e
 
+REPO=https://openwrt.org
+BRANCH=main
+
 echo "Cleaning previous workspace..."
 rm -rf ./openwrt
 mkdir openwrt
 cd openwrt
 
-echo "Downloading stable OpenWrt mainline source archive package..."
-wget -qO- https://github.com | tar -xz --strip-components=1
+echo "Cloning official OpenWrt infrastructure mirror (unblocked endpoint)..."
+# Pulls a highly optimized shallow clone directly from the official openwrt git server
+git clone --depth 1 --branch $BRANCH $REPO .
 
 echo "Updating and installing OpenWrt package feeds..."
 ./scripts/feeds update -a
