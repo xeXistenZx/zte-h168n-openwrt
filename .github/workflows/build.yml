@@ -21,7 +21,7 @@ jobs:
     - name: Verify Output Firmware Binary
       id: check_output
       run: |
-        FILE="./openwrt/bin/targets/econet/en751221/openwrt-econet-en751221-zte_zxhn-h168n-v35-initramfs-kernel.bin"
+        FILE="./openwrt/bin/targets/en75/en751221/openwrt-en75-en751221-zte_zxhn-h168n-v35-initramfs-kernel.bin"
         if [ -f "$FILE" ]; then
           echo "Firmware compilation successful!"
           echo "file_exists=true" >> $GITHUB_OUTPUT
