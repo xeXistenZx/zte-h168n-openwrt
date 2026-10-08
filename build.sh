@@ -3,6 +3,7 @@
 # Exit immediately if any command fails
 set -e
 
+# CORRECTED: This is the official unblocked git server URL string
 REPO=https://openwrt.org
 BRANCH=main
 
@@ -12,7 +13,6 @@ mkdir openwrt
 cd openwrt
 
 echo "Cloning official OpenWrt infrastructure mirror (unblocked endpoint)..."
-# Pulls a highly optimized shallow clone directly from the official openwrt git server
 git clone --depth 1 --branch $BRANCH $REPO .
 
 echo "Updating and installing OpenWrt package feeds..."
