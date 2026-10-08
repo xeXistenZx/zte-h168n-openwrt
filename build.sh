@@ -3,17 +3,8 @@
 # Exit immediately if any command fails
 set -e
 
-# THIS IS THE RAW UNBLOCKED INFRASTRUCTURE ENDPOINT
-REPO=https://openwrt.org
-BRANCH=main
-
-echo "Cleaning previous workspace..."
-rm -rf ./openwrt
-mkdir openwrt
+# Move straight into the folder pre-downloaded by the workflow manager
 cd openwrt
-
-echo "Cloning official OpenWrt infrastructure mirror (unblocked endpoint)..."
-git clone --depth 1 --branch $BRANCH $REPO .
 
 echo "Updating and installing OpenWrt package feeds..."
 ./scripts/feeds update -a
