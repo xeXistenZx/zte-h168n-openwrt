@@ -3,7 +3,7 @@
 # Exit immediately if any command fails
 set -e
 
-# CORRECTED: This is the official unblocked git server URL string
+# THIS IS THE RAW UNBLOCKED INFRASTRUCTURE ENDPOINT
 REPO=https://openwrt.org
 BRANCH=main
 
