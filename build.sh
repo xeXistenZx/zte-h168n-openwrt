@@ -3,15 +3,16 @@
 # Exit immediately if any command fails
 set -e
 
+# Pull directly from the official OpenWrt master repository
 REPO=https://github.com
-BRANCH=econet-en751221-2024-11-21  # Shifts to his primary stable developmental branch pointer
+BRANCH=main  # Targets the live, official development tree
 
 echo "Cleaning previous workspace..."
 rm -rf ./openwrt
 mkdir openwrt
 cd openwrt
 
-echo "Fetching cjdelisle's live EcoNet workspace branch..."
+echo "Fetching official OpenWrt core workspace..."
 git clone --depth 1 --branch $BRANCH $REPO .
 
 echo "Updating and installing OpenWrt package feeds..."
@@ -19,7 +20,7 @@ echo "Updating and installing OpenWrt package feeds..."
 ./scripts/feeds install -a
 
 # ====================================================================
-# INJECTION STEP: This copies your custom work into his tree
+# INJECTION STEP: This copies your custom work into the tree
 # ====================================================================
 echo "Injecting ZTE ZXHN H168N V3.5 hardware blueprint..."
 cp ../en751221_zte_h168n_v35.dts ./target/linux/econet/dts/
