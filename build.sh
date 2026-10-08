@@ -4,18 +4,15 @@
 set -e
 
 REPO=https://github.com
-HASH=ba9f212b567ee1cda360ba1fdb98629862ec974b
+BRANCH=econet-en751221-2024-11-21  # Shifts to his primary stable developmental branch pointer
 
 echo "Cleaning previous workspace..."
 rm -rf ./openwrt
 mkdir openwrt
 cd openwrt
 
-echo "Fetching cjdelisle's verified EcoNet code tree snapshot..."
-git init
-git remote add origin $REPO
-git fetch --depth 1 origin $HASH
-git checkout $HASH
+echo "Fetching cjdelisle's live EcoNet workspace branch..."
+git clone --depth 1 --branch $BRANCH $REPO .
 
 echo "Updating and installing OpenWrt package feeds..."
 ./scripts/feeds update -a
