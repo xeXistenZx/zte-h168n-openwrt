@@ -16,13 +16,8 @@
 	};
 };
 
-/* Disable generic SPI NAND searching loops to stop kernel log errors */
-&spinand {
-	status = "disabled";
-};
-
-/* Target the physical onboard Winbond W25Q64 8MB Flash chip */
-&spi0 {
+/* MASTER REFIX 1: Targets the updated SPI controller label name */
+&spi {
 	status = "okay";
 
 	flash@0 {
@@ -65,8 +60,8 @@
 	};
 };
 
-/* Restrict the Ethernet DMA drivers ring footprint to free up 15MB+ of RAM */
-&eth0 {
+/* MASTER REFIX 2: Targets the updated Ethernet controller node label name */
+&ethernet {
 	status = "okay";
 	tx-ring-size = <128>; 
 	rx-ring-size = <128>;
