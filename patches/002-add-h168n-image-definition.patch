@@ -1,0 +1,17 @@
+diff --git a/target/linux/econet/image/en751221.mk b/target/linux/econet/image/en751221.mk
+index 13b8de4ddc..4cbdbe2262 100644
+--- a/target/linux/econet/image/en751221.mk
++++ b/target/linux/econet/image/en751221.mk
+@@ -77,3 +77,12 @@ define Device/zyxel_pmg5617ga
+   DEVICE_PACKAGES := kmod-usb3 kmod-mt7603 kmod-mt76x2
+ endef
+ TARGET_DEVICES += zyxel_pmg5617ga
++
++define Device/zte_h168n-v3.5
++  DEVICE_VENDOR := ZTE
++  DEVICE_MODEL := ZXHN H168N
++  DEVICE_VARIANT := V3.5
++  DEVICE_DTS := en751221_zte_h168n-v3.5
++  DEVICE_DESCRIPTION := RAM-boot development image for ZTE ZXHN H168N V3.5
++endef
++TARGET_DEVICES += zte_h168n-v3.5

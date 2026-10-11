@@ -1,0 +1,15 @@
+#!/bin/sh /etc/rc.common
+
+START=15
+
+start() {
+    [ "$(cat /tmp/sysinfo/board_name 2>/dev/null)" = "zte,h168n-v3.5" ] || return 0
+
+    echo pfifo_fast > /proc/sys/net/core/default_qdisc || return 1
+    if [ "$(cat /proc/sys/net/core/default_qdisc)" != "pfifo_fast" ]; then
+        logger -t h168n-ethernet "pfifo_fast not active; refusing to load Ethernet"
+        return 1
+    fi
+
+    insmod "/lib/modules/$(uname -r)/econet-eth.ko"
+}

@@ -1,0 +1,12 @@
+diff --git a/package/kernel/econet-eth/Makefile b/package/kernel/econet-eth/Makefile
+index 356d006d29..b9ee17e580 100644
+--- a/package/kernel/econet-eth/Makefile
++++ b/package/kernel/econet-eth/Makefile
+@@ -17,7 +17,6 @@ define KernelPackage/econet-eth
+   TITLE:=EcoNet EN751221 Ethernet Driver
+   DEPENDS:=@TARGET_econet
+   FILES:=$(PKG_BUILD_DIR)/econet-eth.ko
+-  AUTOLOAD:=$(call AutoLoad,90,econet-eth)
+ endef
+ 
+ define KernelPackage/econet-eth/description
