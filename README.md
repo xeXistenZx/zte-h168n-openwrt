@@ -38,28 +38,40 @@ This project builds upon that work.
 
 ## Building on Ubuntu
 
-Prepare a separate OpenWrt source checkout with the base commit
-listed above, install the OpenWrt build dependencies, and prepare
-the package feeds:
+Use an OpenWrt source checkout at commit:
 
-    ./scripts/feeds update -a
-    ./scripts/feeds install -a
+    e5c7612b1664d9e533ed5ddb6a861b4d0a62daa8
 
-Then run this repository's build script, passing the path to the
-OpenWrt checkout:
+Install the usual OpenWrt build dependencies and prepare the
+package feeds before building.
 
-    ./build.sh /path/to/openwrt
+From your OpenWrt source directory, apply the H168N patches:
 
-The script applies the board patches, installs the DTS and
-configuration files, and starts compilation.
+    git apply /path/to/zte-h168n-openwrt/patches/001-disable-econet-eth-autoload.patch
+    git apply /path/to/zte-h168n-openwrt/patches/002-add-h168n-image-definition.patch
+
+Copy the board-specific files:
+
+    cp /path/to/zte-h168n-openwrt/dts/*.dts target/linux/econet/dts/
+    cp /path/to/zte-h168n-openwrt/config/config-6.18 target/linux/econet/
+    mkdir -p files/etc
+    cp -a /path/to/zte-h168n-openwrt/overlay/etc/. files/etc/
+    cp /path/to/zte-h168n-openwrt/config/.config-h168n .config
+
+Build the image:
+
+    make defconfig
+    make -j$(nproc)
 
 Expected output:
 
     bin/targets/econet/en751221/openwrt-econet-en751221-zte_h168n-v3.5-initramfs-kernel.bin
 
-The original development environment and package feeds have not
-yet been fully pinned, so bit-for-bit reproducibility is not
-guaranteed.
+Incremental builds can complete quickly, while fresh builds
+take considerably longer.
+
+Package feed revisions and the full build environment are not
+yet pinned, so bit-for-bit reproducibility is not guaranteed.
 
 ## RAM boot procedure
 
@@ -101,7 +113,7 @@ not resolve the Ethernet throughput limitation.
 - Wi-Fi and other peripherals remain unvalidated.
 - RAM-only functionality is experimental.
 
-See docs/development.md for diagnostic findings and future work.
+See the [documentation index](docs/README.md) for technical investigations, experiments, hardware findings and future work.
 
 ## Safety and contributions
 
