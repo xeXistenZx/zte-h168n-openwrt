@@ -150,3 +150,13 @@ Do not flash this image to SPI NOR.
 
 The borrowed test router's original firmware and flash contents
 were preserved throughout this validation.
+
+<!-- H168N-RELEASE-AI-CREDITS-v1 -->
+## Credits, AI transparency and feedback
+
+The reported hardware experiments and measurements were performed by the human project researcher(s)/contributors operating the device. **ChatGPT (OpenAI) and other AI assistants** supported technical discussions, analyzing shared outputs, proposing experiments and code, drafting documentation and Arabic translation. AI output can be mistaken; technical claims and changes require independent human review and reproducible physical testing.
+
+Thanks to OpenWrt and Linux contributors and to **CJ DeLisle** for the upstream [`econet_eth`](https://github.com/cjdelisle/econet_eth) driver. Attribution does not imply endorsement.
+
+We welcome bug reports, corrections to measurements, technical review, translations, patch contributions and repeatable tests. See [CONTRIBUTING.md](../../CONTRIBUTING.md), [CREDITS.md](../../CREDITS.md) and [Arabic release notes](RELEASE_NOTES.ar.md). Genuine terminal screenshots are planned; see [screenshot instructions](../../docs/SCREENSHOTS.md).
+<!-- /H168N-RELEASE-AI-CREDITS-v1 -->

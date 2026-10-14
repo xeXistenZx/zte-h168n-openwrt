@@ -1,5 +1,24 @@
 # OpenWrt for ZTE ZXHN H168N V3.5
 
+## Project Goal
+
+This project aims to give inexpensive and discarded ZTE ZXHN H168N
+routers a second life through OpenWrt, while making Linux, networking
+and embedded development more accessible to learners and hobbyists,
+particularly in Egypt and the Arabic-speaking community.
+
+These routers are commonly sold second-hand in Egypt for around
+**250–400 EGP (approximately $5–7 USD)**, making them potentially
+excellent low-cost learning platforms.
+
+We aim to document our experiments, successes, failures and discoveries
+so others can learn from them, avoid repeating unnecessary work and
+contribute improvements.
+
+**Contributions, feedback, bug reports, corrections and new ideas
+are always welcome.**
+
+
 Experimental RAM-only OpenWrt port for the ZTE ZXHN H168N V3.5
 (Orange Egypt variant), based on the EcoNet EN751221 platform.
 
@@ -121,3 +140,19 @@ Contributions, testing reports and driver investigations are welcome.
 Please distinguish confirmed observations from hypotheses.
 
 Do not assume that this image is suitable for flash installation.
+
+<!-- H168N-BILINGUAL-ACKNOWLEDGEMENTS-v1 -->
+## Languages / لغات التوثيق
+
+- [Arabic project overview / شرح المشروع بالعربي](README.ar.md)
+- [Technical documentation / التوثيق الفني](docs/ALPHA1-DOCUMENTATION-INDEX.md) · [بالعربي](docs/ALPHA1-DOCUMENTATION-INDEX.ar.md)
+- [Release roadmap](docs/H168N-ROADMAP.md) · [بالعربي](docs/H168N-ROADMAP.ar.md)
+
+## Credits, AI assistance and contribution
+
+The hardware tests were operated and measured by the project's human researcher(s)/contributors. **ChatGPT (OpenAI) and other AI assistants** helped with technical discussion, analyzing shared outputs, suggesting experiments, drafting commands and code, writing documents and Arabic translation. AI-generated content can be wrong and needs human review; it does not replace actual device testing. The OpenWrt/Linux community and **CJ DeLisle's [`econet_eth`](https://github.com/cjdelisle/econet_eth)** are acknowledged for their upstream work. Attribution does not imply endorsement.
+
+Corrections, bug reports, reproducible tests and pull requests are very welcome: [CONTRIBUTING.md](CONTRIBUTING.md) · [بالعربي](CONTRIBUTING.ar.md) · [CREDITS.md](CREDITS.md). Authentic boot screenshots can be added using the [screenshot guide](docs/SCREENSHOTS.md); screenshots have not yet been supplied in this add-on.
+
+**Experimental RAM-only image — do not flash.** No factory/sysupgrade image or validated flash recovery procedure is provided.
+<!-- /H168N-BILINGUAL-ACKNOWLEDGEMENTS-v1 -->
