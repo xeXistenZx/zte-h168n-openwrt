@@ -1,0 +1,22 @@
+#!/bin/sh /etc/rc.common
+
+START=12
+
+start() {
+    echo pfifo_fast > /proc/sys/net/core/default_qdisc
+
+    for m in mt7530 mt7530-mmio econet-eth; do
+        mod="$(echo "$m" | tr '-' '_')"
+        [ -d "/sys/module/$mod" ] && continue
+
+        insmod "/lib/modules/$(uname -r)/$m.ko" || {
+            echo "H168N: failed to load $m" >&2
+            return 1
+        }
+    done
+
+    for q in /sys/class/net/eth0/queues/tx-*/byte_queue_limits; do
+        [ -w "$q/limit_min" ] || continue
+        echo 32768 > "$q/limit_min"
+    done
+}

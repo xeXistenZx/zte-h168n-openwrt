@@ -1,0 +1,30 @@
+diff --git a/package/kernel/econet-eth/Makefile b/package/kernel/econet-eth/Makefile
+index 7bc69668e..244c3f4e7 100644
+--- a/package/kernel/econet-eth/Makefile
++++ b/package/kernel/econet-eth/Makefile
+@@ -20,7 +20,6 @@ define KernelPackage/econet-eth
+     $(PKG_BUILD_DIR)/mt7530.ko \
+     $(PKG_BUILD_DIR)/mt7530-mmio.ko \
+     $(PKG_BUILD_DIR)/mt7530-mdio.ko
+-  AUTOLOAD:=$(call AutoLoad,90,econet-eth mt7530 mt7530-mdio mt7530-mmio)
+ endef
+ 
+ define KernelPackage/econet-eth/description
+diff --git a/target/linux/econet/image/en751221.mk b/target/linux/econet/image/en751221.mk
+index ec96a5ac2..64c084f9f 100644
+--- a/target/linux/econet/image/en751221.mk
++++ b/target/linux/econet/image/en751221.mk
+@@ -92,3 +92,13 @@ define Device/zyxel_pmg5617ga
+   DEVICE_PACKAGES := kmod-usb3 kmod-mt7603 kmod-mt76x2
+ endef
+ TARGET_DEVICES += zyxel_pmg5617ga
++
++define Device/zte_h168n-v3.5
++  DEVICE_VENDOR := ZTE
++  DEVICE_MODEL := ZXHN H168N
++  DEVICE_VARIANT := V3.5
++  DEVICE_DTS := en751221_zte_h168n-v3.5
++  DEVICE_DESCRIPTION := RAM-only development image for ZTE ZXHN H168N V3.5
++  IMAGES :=
++endef
++TARGET_DEVICES += zte_h168n-v3.5

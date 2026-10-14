@@ -1,0 +1,6 @@
+h168n_early_qdisc() {
+    [ -w /proc/sys/net/core/default_qdisc ] &&
+        echo pfifo_fast > /proc/sys/net/core/default_qdisc
+}
+
+boot_hook_add preinit_main h168n_early_qdisc

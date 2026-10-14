@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/dts-v1/;
+#include "en751221.dtsi"
+
+/ {
+    model = "ZTE ZXHN H168N V3.5";
+    compatible = "zte,h168n-v3.5", "econet,en751221";
+
+    memory@0 {
+        device_type = "memory";
+        reg = <0x00000000 0x04000000>;
+    };
+
+    chosen {
+        stdout-path = "/serial@1fbf0000:115200";
+        linux,usable-memory-range = <0x00020000 0x03fe0000>;
+    };
+};
+
+&nand {
+    status = "disabled";
+};
+
+&gmac0 {
+    status = "okay";
+};
+
+&switch0 {
+    status = "okay";
+};
+
+&fsw_port0 { status = "okay"; label = "port0"; };
+&fsw_port1 { status = "okay"; label = "port1"; };
+&fsw_port2 { status = "okay"; label = "port2"; };
+&fsw_port3 { status = "okay"; label = "port3"; };
+&fsw_port4 { status = "okay"; label = "port4"; };
+
+&fsw_phy0 { status = "okay"; };
+&fsw_phy1 { status = "okay"; };
+&fsw_phy2 { status = "okay"; };
+&fsw_phy3 { status = "okay"; };
+&fsw_phy4 { status = "okay"; };
